@@ -10,9 +10,9 @@ namespace Sharp_Lab5_With_Serialization
         private List<Fruit> Fruits = new List<Fruit>();
 
         public void AddFruit(Fruit fruit) => Fruits.Add(fruit);
-        public void AddFruit(string name, string color, int price, double weight)
+        public void AddFruit(string name, double price, int amount)
         {
-            Fruit fruit = new Fruit(name, color, price, weight);
+            Fruit fruit = new Fruit(name, price, amount);
             AddFruit(fruit);
         }
         public void AddFruit(bool isApple)

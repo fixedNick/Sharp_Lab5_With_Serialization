@@ -7,38 +7,34 @@ namespace Sharp_Lab5_With_Serialization
     public class Fruit
     {
         public string Name;
-        public string Color;
-        public int Price;
-        public double Weight;
+        public double Price;
+        public int Amount;
 
         public Fruit()
         {
             //EnterFruitData();
         }
-        public Fruit(string name, string color, int price, double weight)
+        public Fruit(string name, double price, int amount)
         {
             Name = name;
-            Color = color;
             Price = price;
-            Weight = weight;
+            Amount = amount;
         }
 
         public virtual void PrintFruitData()
         {
-            Console.WriteLine($"Name: [{Name}] | Color: [{Color}] | Price: [{Price}] | Weigth: [{Weight}]");
+            Console.WriteLine($"Name: [{Name}] |  Price: [{Price}] | Amount: [{Amount}]");
         }
         public virtual void EnterFruitData()
         {
             Console.WriteLine("[Fill rows below to your new fruit]");
             Console.Write("Enter name: ");
             Name = Console.ReadLine();
-            Console.Write("Enter color: ");
-            Color = Console.ReadLine();
 
             while (true)
             {
                 Console.Write("Enter price: ");
-                if (int.TryParse(Console.ReadLine(), out int price) == true)
+                if (double.TryParse(Console.ReadLine(), out double price) == true)
                 {
                     Price = price;
                     break;
@@ -47,10 +43,10 @@ namespace Sharp_Lab5_With_Serialization
             }
             while (true)
             {
-                Console.Write("Enter weight: ");
-                if (double.TryParse(Console.ReadLine(), out double weight) == true)
+                Console.Write("Enter amount: ");
+                if (int.TryParse(Console.ReadLine(), out int amount) == true)
                 {
-                    Weight = weight;
+                    Amount = amount;
                     break;
                 }
                 Console.WriteLine("Invalid value");
@@ -63,14 +59,13 @@ namespace Sharp_Lab5_With_Serialization
         {
             var file_data = File.ReadAllText(filepath).Split('|');
             Name = file_data[0];
-            Color = file_data[1];
-            Price = Convert.ToInt32(file_data[2]);
-            Weight = Convert.ToDouble(file_data[3]);
+            Price= Convert.ToDouble(file_data[2]);
+            Amount = Convert.ToInt32(file_data[3]);
         }
 
         public virtual void SaveDataToFile(string filepath)
         {
-            string filetext = Name + "|" + Color + "|" + Price + "|" + Weight;
+            string filetext = Name + "|" + Price + "|" + Amount;
             File.WriteAllText(filepath, filetext);
         }
     }

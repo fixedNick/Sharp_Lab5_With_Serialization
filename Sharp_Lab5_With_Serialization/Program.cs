@@ -29,7 +29,7 @@ namespace Sharp_Lab5_With_Serialization
         {
 #if _SAVE_READ_SINGLE_FILES_
             Apple apple = new Apple();
-            apple.EnterAppleData();
+            apple.EnterFruitData();
             Fruit fruit = new Fruit();
             fruit.EnterFruitData();
 
